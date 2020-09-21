@@ -10,13 +10,6 @@ variable "function_prefix" {
   default = ""
 }
 
-variable "provider" {
-  default = ""
-}
-
-variable "hosted_zone_id"{}
-
-variable "domain_name" {}
 
 variable "costsave" {
   default = 1
