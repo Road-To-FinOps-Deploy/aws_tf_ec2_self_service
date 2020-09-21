@@ -19,7 +19,6 @@ module "aws_tf_ec2_self_service" {
 | ec2\_stop\_cron | Rate expression for when to run the stop| string | `"cron(0 20 ? * MON-FRI *)"` | no 
 | function\_prefix | Prefix for the name of the lambda created | string | `""` | no |
 | aws_region| region deployed| string | `"eu-west-1"` | no |
-| costsave| count if needed in an evv| string | `"1"` | no |
 
 
 ## Testing 

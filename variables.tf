@@ -9,8 +9,3 @@ variable "ec2_stop_cron" {
 variable "function_prefix" {
   default = ""
 }
-
-
-variable "costsave" {
-  default = 1
-}

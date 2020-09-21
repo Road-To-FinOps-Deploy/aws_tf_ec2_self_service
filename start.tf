@@ -6,7 +6,7 @@ data "archive_file" "bastion_start_zip" {
 }
 
 resource "aws_lambda_function" "bastion_start" {
-  count            = "${var.costsave}"
+
   filename         = "${path.module}/output/bastion_start.zip"
   function_name    = "${var.function_prefix}_bastion_start"
   role             = "${aws_iam_role.iam_role_for_bastion_start_stop.arn}"
