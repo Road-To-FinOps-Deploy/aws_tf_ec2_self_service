@@ -1,18 +1,18 @@
 resource "aws_api_gateway_rest_api" "api" {
-  count            = "${var.costsave}"
+
   name        = "Bastion_Start"
   description = "Terraform Serverless Application Example"
 }
 
 resource "aws_api_gateway_resource" "proxy" {
-  count            = "${var.costsave}"
+
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   parent_id   = "${aws_api_gateway_rest_api.api.root_resource_id}"
   path_part   = "{proxy+}"
 }
 
 resource "aws_api_gateway_method" "proxy" {
-  count            = "${var.costsave}"
+
   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
   resource_id   = "${aws_api_gateway_resource.proxy.id}"
   http_method   = "ANY"
@@ -20,7 +20,7 @@ resource "aws_api_gateway_method" "proxy" {
 }
 
 resource "aws_api_gateway_integration" "lambda" {
-  count            = "${var.costsave}"
+
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   resource_id = "${aws_api_gateway_method.proxy.resource_id}"
   http_method = "${aws_api_gateway_method.proxy.http_method}"
@@ -33,7 +33,7 @@ resource "aws_api_gateway_integration" "lambda" {
 
 
 resource "aws_api_gateway_deployment" "api" {
-  count            = "${var.costsave}"
+
   depends_on = [
     "aws_api_gateway_integration.lambda"
   ]
@@ -43,7 +43,7 @@ resource "aws_api_gateway_deployment" "api" {
 }
 
 resource "aws_lambda_permission" "apigw" {
-  count            = "${var.costsave}"
+
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.bastion_start.arn}"
