@@ -2,7 +2,7 @@ variable "aws_region" {
   default = "eu-west-1"
 }
 
-variable "bastion_stop_cron" {
+variable "ec2_stop_cron" {
   default = "cron(0 20 ? * MON-FRI *)"
 }
 
